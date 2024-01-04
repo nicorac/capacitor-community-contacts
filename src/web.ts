@@ -14,6 +14,10 @@ export class ContactsWeb
     throw this.unimplemented('Not implemented on web.');
   }
 
+  async openContact(): Promise<void> {
+    throw this.unimplemented('Not implemented on web.');
+  }
+
   async getContact(): Promise<Definitions.GetContactResult> {
     throw this.unimplemented('Not implemented on web.');
   }

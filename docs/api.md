@@ -25,6 +25,19 @@ requestPermissions() => Promise<PermissionStatus>
 --------------------
 
 
+### openContact(...)
+
+```typescript
+openContact(options: OpenContactOptions) => Promise<void>
+```
+
+| Param         | Type                                                   |
+| ------------- | ------------------------------------------------------ |
+| **`options`** | <code>[OpenContactOptions](#opencontactoptions)</code> |
+
+--------------------
+
+
 ### getContact(...)
 
 ```typescript
@@ -106,6 +119,13 @@ pickContact(options: PickContactOptions) => Promise<PickContactResult>
 | Prop           | Type                                             |
 | -------------- | ------------------------------------------------ |
 | **`contacts`** | <code>[PermissionState](#permissionstate)</code> |
+
+
+#### OpenContactOptions
+
+| Prop            | Type                |
+| --------------- | ------------------- |
+| **`contactId`** | <code>string</code> |
 
 
 #### GetContactResult

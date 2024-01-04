@@ -7,6 +7,7 @@ export interface PermissionStatus {
 export interface ContactsPlugin {
   checkPermissions(): Promise<PermissionStatus>;
   requestPermissions(): Promise<PermissionStatus>;
+  openContact(options: OpenContactOptions): Promise<void>;
   getContact(options: GetContactOptions): Promise<GetContactResult>;
   getContacts(options: GetContactsOptions): Promise<GetContactsResult>;
   createContact(options: CreateContactOptions): Promise<CreateContactResult>;
@@ -108,6 +109,10 @@ export interface Projection {
    * @default false
    */
   image?: boolean;
+}
+
+export interface OpenContactOptions {
+  contactId?: string;   // ID of the contact to open. If null (or empty), the default contacts app will be opened.
 }
 
 export interface GetContactOptions {

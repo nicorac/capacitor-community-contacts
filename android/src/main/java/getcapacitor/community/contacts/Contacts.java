@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentProviderOperation;
 import android.content.ContentProviderResult;
 import android.content.ContentResolver;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
@@ -102,6 +103,21 @@ public class Contacts {
 
     Contacts(Activity activity) {
         this.mActivity = activity;
+    }
+
+    public boolean openContact(@Nullable String contactId) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            Uri uri = (contactId == null || contactId.length() == 0)
+                ? ContactsContract.Contacts.CONTENT_URI
+                : Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_URI, contactId);
+            intent.setData(uri);
+            mActivity.startActivity(intent);
+            return true;
+        } catch (Exception e) {
+            // Something went wrong
+            return false;
+        }
     }
 
     public ContactPayload getContact(@NonNull String contactId, GetContactsProjectionInput projectionInput) {

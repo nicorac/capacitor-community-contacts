@@ -71,6 +71,22 @@ public class ContactsPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void openContact(PluginCall call) {
+        if (!isContactsPermissionGranted()) {
+            requestContactsPermission(call);
+        } else {
+            String contactId = call.getString("contactId");
+
+            if (!implementation.openContact(contactId)) {
+              call.reject("Something went wrong.");
+              return;
+            }
+
+            call.resolve();
+        }
+    }
+
+    @PluginMethod
     public void getContact(PluginCall call) {
         if (!isContactsPermissionGranted()) {
             requestContactsPermission(call);
